@@ -1,8 +1,14 @@
 # d3-bootstrap
 
-Twitter's [Bootstrap](http://twitter.github.com/bootstrap/) is an awesome CSS framework with some really nice [JavaScript tools](http://twitter.github.com/bootstrap/javascript.html). The problem with these tools, though, is that they rely heavily on jQuery, while d3 provides (approximately) 99% of the functionality they require.
+Twitter's [Bootstrap](http://twitter.github.com/bootstrap/) is an awesome CSS
+framework with some really nice [JavaScript tools](http://twitter.github.com/bootstrap/javascript.html).
+The problem with these tools, though, is that they rely heavily on jQuery,
+while d3 provides (approximately) 99% of the functionality they require.
 
-At first I considered a shim for `$` that would expose a more jQuery-like facade on top of d3, but that quickly got messy. So intead, I decided to start rewriting each of the Bootstrap tools from scratch and in a more d3-friendly style. E.g., [Bootstrap's tooltips](http://twitter.github.com/bootstrap/javascript.html#tooltips):
+At first I considered a shim for `$` that would expose a more jQuery-like
+facade on top of d3, but that quickly got messy. Instead, I decided to start
+rewriting each of Bootstrap's tools from scratch and in a more d3-friendly
+style. For example, [Bootstrap's tooltips](http://twitter.github.com/bootstrap/javascript.html#tooltips):
 
 ```
 $("a.tt").tooltip({
@@ -17,3 +23,15 @@ d3.selectAll("a.tt")
   .call(d3.tooltip()
     .placement("right"));
 ```
+
+## Usage
+
+There are a couple of ways to use the plugins. The easiest is to just include
+`d3-bootstrap.js` (or the minified version, `d3-bootstrap.min.js`). If you want
+individual tools (which is mostly irrelevant now, since there are only
+tooltips) you'll need:
+
+  1. `d3-compat.js` (or `d3-compat.min.js`), which provides some baseline
+  jQuery-like compatibility such as `"mouseenter"` and `"mouseleave"` event
+  support; and
+  2. One or more `bootstrap-{tool}.js` scripts, e.g. `bootstrap-tooltip.js`.
