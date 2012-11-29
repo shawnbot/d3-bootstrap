@@ -19,8 +19,10 @@
         type = bits.shift(),
         shim = shims[type];
     if (shim) {
-      evt = [shim[0], bits].join(".");
-      callback = shim[1].call(null, callback);
+      evt = bits.length ? [shim[0], bits].join(".") : shim[0];
+      if (typeof callback === "function") {
+        callback = shim[1](callback);
+      }
       return d3_on.call(this, evt, callback, useCapture);
     } else {
       return d3_on.apply(this, arguments);
