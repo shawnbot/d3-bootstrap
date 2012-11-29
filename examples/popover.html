@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <script src="http://d3js.org/d3.v2.js"></script>
+    <script src="../d3-compat.js"></script>
+    <script src="../bootstrap-popover.js"></script>
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <style type="text/css">
+      .container {
+        margin-top: 300px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>popovers</h1>
+      <p>This
+      <a class="btn pop" data-placement="bottom" title="Paragraph" data-content="the word paragraph">paragraph</a>
+      should have some
+      <a class="btn pop" data-placement="top" data-html="true" title="Popover" data-content="the word &lt;popover&gt;">popover</a>
+      in it. You can put them
+      <a class="btn pop" data-placement="left" title="Left" data-content="look over here!">on the left</a>
+      or 
+      <a class="btn pop" data-placement="right" title="Right" data-content="look over there!">on the right</a>, too.
+      </p>
+    </div>
+    <script>
+      var popover = bootstrap.popover()
+        .title(function() {
+          return this.getAttribute("title") || "";
+        })
+        .placement(function() {
+          return this.getAttribute("data-placement");
+        });
+
+      d3.selectAll("a.pop")
+        .call(popover);
+    </script>
+  </body>
+</html>
