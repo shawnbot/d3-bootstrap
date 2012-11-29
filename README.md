@@ -10,7 +10,7 @@ $("a.tt").tooltip({
 });
 ```
 
-[becomes](http://prag.ma/code/d3-bootstrap/examples/tooltip.html):
+[become](http://prag.ma/code/d3-bootstrap/examples/tooltip.html):
 
 ```
 d3.selectAll("a.tt")
