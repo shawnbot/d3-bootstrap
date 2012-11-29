@@ -1,4 +1,4 @@
-TOOLS ?= tooltip popover
+TOOLS ?= tooltip popover alert
 JS_COMPILER ?= uglifyjs
 
 all: \

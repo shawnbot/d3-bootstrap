@@ -1,0 +1,32 @@
+
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <script src="http://d3js.org/d3.v2.js"></script>
+    <script src="../d3-compat.js"></script>
+    <script src="../bootstrap-alert.js"></script>
+    <link rel="stylesheet" href="../css/bootstrap.css">
+  </head>
+  <body>
+    <div class="container">
+      <h1>alerts</h1>
+      <p class="alert">
+        This is an alert! <a class="close" data-dismiss="alert">&times;</a>
+      </p>
+      <p class="alert alert-success">
+        This is success! <a class="close" data-dismiss="alert">&times;</a>
+      </p>
+      <p class="alert alert-error">
+        This is an error! <a class="close" data-dismiss="alert">&times;</a>
+      </p>
+      <p class="alert alert-info">
+        We have information for you!
+      </p>
+      </p>
+    </div>
+    <script>
+      d3.selectAll("p.alert")
+        .call(bootstrap.alert());
+    </script>
+  </body>
+</html>
