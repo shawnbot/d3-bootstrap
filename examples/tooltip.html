@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <script src="http://d3js.org/d3.v2.js"></script>
+    <script src="../d3-compat.js"></script>
+    <script src="../bootstrap-tooltip.js"></script>
+    <link rel="stylesheet" href="../css/bootstrap.css">
+  </head>
+  <body>
+    <div class="container">
+      <h1>d3query</h1>
+      <p>This
+      <a class="tt" data-placement="top" title="the word paragraph">paragraph</a>
+      should have some
+      <a class="tt" data-placement="bottom" data-html="true" title="the word &lt;tooltip&gt;">tooltips</a>
+      in it.</p>
+    </div>
+    <script>
+      var tooltip = bootstrap.tooltip()
+        .placement(function() {
+          return this.getAttribute("data-placement");
+        });
+
+      d3.selectAll("a.tt")
+        .call(tooltip);
+    </script>
+  </body>
+</html>
