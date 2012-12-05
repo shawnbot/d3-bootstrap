@@ -73,7 +73,7 @@
         .attr("title", function() {
           return this.getAttribute("data-original-title") || this.getAttribute("title");
         })
-        .attr("data-origina-title", null)
+        .attr("data-original-title", null)
         .select(".tooltip")
         .remove();
     };
