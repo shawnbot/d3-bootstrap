@@ -1,8 +1,8 @@
 (function(exports) {
 
-  var bootstrap = (typeof exports.bootstrap === "object")
-    ? exports.bootstrap
-    : (exports.bootstrap = {});
+  var bootstrap = (typeof exports.bootstrap === "object") ?
+    exports.bootstrap :
+    (exports.bootstrap = {});
 
   bootstrap.tooltip = function() {
 
@@ -108,7 +108,7 @@
           tip = root.select(".tooltip")
             .classed("in", true),
           markup = html.apply(this, arguments),
-          inner = tip.select(".tooltip-inner")[markup ? "html" : "text"](content),
+          innercontent = tip.select(".tooltip-inner")[markup ? "html" : "text"](content),
           place = placement.apply(this, arguments),
           outer = getPosition(root.node()),
           inner = getPosition(tip.node()),
@@ -125,13 +125,13 @@
           pos = {x: outer.x - inner.w, y: outer.y + (outer.h - inner.h) / 2};
           break;
         case "bottom":
-          pos = {x: outer.x + (outer.w - inner.w) / 2, y: outer.y + outer.h};
+          pos = {x: Math.max(0, outer.x + (outer.w - inner.w) / 2), y: outer.y + outer.h};
           break;
       }
 
-      tip.style(pos
-        ? {left: ~~pos.x + "px", top: ~~pos.y + "px"}
-        : {left: null, top: null});
+      tip.style(pos ?
+        {left: ~~pos.x + "px", top: ~~pos.y + "px"} :
+        {left: null, top: null});
 
       this.tooltipVisible = true;
     }
@@ -155,12 +155,23 @@
   };
 
   function getPosition(node) {
-    return {
-      x: node.offsetLeft,
-      y: node.offsetTop,
-      w: node.offsetWidth,
-      h: node.offsetHeight
-    };
+    var mode = d3.select(node).style('position');
+    if (mode === 'absolute' || mode === 'static') {
+      return {
+        x: node.offsetLeft,
+        y: node.offsetTop,
+        w: node.offsetWidth,
+        h: node.offsetHeight
+      };
+    } else {
+      return {
+        x: 0,
+        y: 0,
+        w: node.offsetWidth,
+        h: node.offsetHeight
+      };
+    }
   }
 
 })(this);
+
