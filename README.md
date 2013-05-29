@@ -20,7 +20,7 @@ $("a.tt").tooltip({
 
 ```
 d3.selectAll("a.tt")
-  .call(d3.tooltip()
+  .call(bootstrap.tooltip()
     .placement("right"));
 ```
 
