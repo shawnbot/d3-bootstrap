@@ -110,27 +110,33 @@
           markup = html.apply(this, arguments),
           innercontent = tip.select(".tooltip-inner")[markup ? "html" : "text"](content),
           place = placement.apply(this, arguments),
+          pos = root.style("position"),
           outer = getPosition(root.node()),
           inner = getPosition(tip.node()),
-          pos;
+          style;
 
+      if (pos === "absolute" || pos === "relative") {
+          outer.x = outer.y = 0;
+      }
+
+      var style;
       switch (place) {
         case "top":
-          pos = {x: outer.x + (outer.w - inner.w) / 2, y: outer.y - inner.h};
+          style = {x: outer.x + (outer.w - inner.w) / 2, y: outer.y - inner.h};
           break;
         case "right":
-          pos = {x: outer.x + outer.w, y: outer.y + (outer.h - inner.h) / 2};
+          style = {x: outer.x + outer.w, y: outer.y + (outer.h - inner.h) / 2};
           break;
         case "left":
-          pos = {x: outer.x - inner.w, y: outer.y + (outer.h - inner.h) / 2};
+          style = {x: outer.x - inner.w, y: outer.y + (outer.h - inner.h) / 2};
           break;
         case "bottom":
-          pos = {x: Math.max(0, outer.x + (outer.w - inner.w) / 2), y: outer.y + outer.h};
+          style = {x: Math.max(0, outer.x + (outer.w - inner.w) / 2), y: outer.y + outer.h};
           break;
       }
 
-      tip.style(pos ?
-        {left: ~~pos.x + "px", top: ~~pos.y + "px"} :
+      tip.style(style ?
+        {left: ~~style.x + "px", top: ~~style.y + "px"} :
         {left: null, top: null});
 
       this.tooltipVisible = true;
