@@ -1,3 +1,7 @@
+# :warning: This repository is no longer maintained :warning:
+
+Please see [sebt3/d3-bootstrap](https://github.com/sebt3/d3-bootstrap), an implementation that supports D3 v4.
+
 # d3-bootstrap
 
 Twitter's [Bootstrap](http://twitter.github.com/bootstrap/) is an awesome CSS
